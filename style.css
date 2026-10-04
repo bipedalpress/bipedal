@@ -8,6 +8,8 @@
   --alien-line: #8E846B; /* the Vitruvian circle and glyph tone */
   --ink: #15130E;
   --ink-soft: #3B362B;
+  --accent: #6B1F2A;       /* accent: used sparingly */
+  --accent-light: #D9959C; /* accent on the dark submit section */
 
   --serif: "IM Fell DW Pica", "Iowan Old Style", Georgia, "Times New Roman", serif;
   --serif-sc: "IM Fell DW Pica SC", "IM Fell DW Pica", Georgia, serif;
@@ -55,16 +57,16 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 /* Buttons */
 .btn {
   display: inline-block;
-  background: var(--ink); color: var(--cream);
+  background: var(--accent); color: var(--cream);
   padding: 0.75em 1.4em;
   font-family: var(--serif-sc); font-size: 1.05em; letter-spacing: 0.03em; font-weight: 400; text-decoration: none;
-  border: 2px solid var(--ink);
+  border: 2px solid var(--accent);
   border-radius: 999px;
   transition: background 0.15s, color 0.15s;
 }
-.btn:hover { background: var(--cream); color: var(--ink); }
-.btn-quiet { background: transparent; color: var(--ink); }
-.btn-quiet:hover { background: var(--ink); color: var(--cream); }
+.btn:hover { background: var(--cream); color: var(--accent); }
+.btn-quiet { background: transparent; color: var(--accent); }
+.btn-quiet:hover { background: var(--accent); color: var(--cream); }
 .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
 
 /* Header */
@@ -77,12 +79,12 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   border-bottom: 1px solid color-mix(in srgb, var(--alien-line) 35%, transparent);
 }
 .brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; font-family: var(--serif-sc); font-weight: 400; font-size: 1.4rem; letter-spacing: 0.03em; }
-.brand img { border-radius: 50%; }
+.brand img { border-radius: 4px; }
 .site-header nav { display: flex; align-items: center; gap: clamp(0.9rem, 2.5vw, 2rem); font-family: var(--serif-sc); font-size: 1.15rem; letter-spacing: 0.03em; }
 .site-header nav a { text-decoration: none; }
 .site-header nav a:not(.nav-cta):hover { text-decoration: underline; }
-.nav-cta { border: 2px solid var(--ink); border-radius: 999px; padding: 0.2em 0.9em; }
-.nav-cta:hover { background: var(--ink); color: var(--cream); }
+.nav-cta { border: 2px solid var(--accent); color: var(--accent); border-radius: 999px; padding: 0.2em 0.9em; }
+.nav-cta:hover { background: var(--accent); color: var(--cream); }
 
 /* Hero: the memorable moment is the alien, large, against the page's own cream */
 .hero {
@@ -123,7 +125,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   gap: clamp(1.5rem, 4vw, 3.5rem);
   margin: clamp(2rem, 4vw, 3.5rem) 0;
 }
-.why-grid > div { border-top: 3px solid var(--ink); padding-top: 1rem; }
+.why-grid > div { border-top: 3px solid var(--accent); padding-top: 1rem; }
 .why-grid p { margin: 0; }
 .why-close { padding-top: 1rem; }
 .why-close p:not(:last-child) { font-size: 1.15em; }
@@ -137,7 +139,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   background: var(--alien);
   padding: 1.5rem 1.5rem 1.75rem;
   border-radius: 4px 4px 0 0;
-  border-bottom: 6px solid var(--ink);
+  border-bottom: 6px solid var(--accent);
   display: flex; flex-direction: column; justify-content: flex-end;
 }
 /* Different heights, like books of different sizes on a shelf */
@@ -167,7 +169,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .submit li { margin-bottom: 0.35em; }
 .ai-note {
   margin-top: 3rem; padding: 1.5rem 1.75rem;
-  border: 1px solid var(--alien-line); border-left: 6px solid var(--alien);
+  border: 1px solid var(--alien-line); border-left: 6px solid var(--accent-light);
   border-radius: 4px;
 }
 .ai-note h3 { margin-top: 0; }
@@ -176,6 +178,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 /* Footer */
 .site-footer { padding: 2rem var(--gutter); text-align: center; font-size: 0.95rem; }
 .site-footer p { margin: 0 auto; max-width: none; }
+.site-footer a { color: var(--accent); }
 
 /* Tablet and phone */
 @media (max-width: 860px) {
