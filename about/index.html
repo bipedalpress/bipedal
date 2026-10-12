@@ -23,6 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica:ital@0;1&family=IM+Fell+DW+Pica+SC&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <script src="../site.js"></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to main content</a>
@@ -33,6 +34,7 @@
       <span>Bipedal Press</span>
     </a>
     <nav aria-label="Main">
+      <a href="../">Home</a>
       <a href="../about/" aria-current="page">About</a>
       <a href="../#newsletter" class="nav-news">Newsletter</a>
       <a href="../submit/" class="nav-cta">Submit</a>
@@ -46,8 +48,25 @@
       <p>We publish work that challenges assumptions, unsettles the familiar, and invites readers to see the world differently. We&rsquo;re here for readers who like their stories a little sideways, and for authors who break the mold.</p>
     </section>
 
+    <section class="origin" aria-labelledby="origin-h">
+      <div class="origin-glyph" aria-hidden="true"><div></div></div>
+      <div class="origin-story">
+        <h2 id="origin-h" class="reveal">How Bipedal Press began</h2>
+        <p class="reveal">Bipedal Press is the brainchild of Courtney (me) and the Other.</p>
+        <p class="reveal">The Other is a manifestation of everything that lies unseen, unnoticed, unappreciated, and unrepresented in the world.</p>
+        <p class="reveal">The Other is that thought you pushed away because it didn&rsquo;t match convention.</p>
+        <p class="reveal">The Other realized the word &ldquo;bipedal&rdquo; is <a href="https://www.laphamsquarterly.org/animals/miscellany/plato-and-diogenes-debate-featherless-bipeds" rel="noopener">a funny word used to describe humans</a>, along with other creatures that are (for some reason) othered. How odd does it feel to describe yourself as bipedal? And even then&mdash;are you?</p>
+        <p class="reveal">The Other saw the status quo, poked it, and asked, &ldquo;wtf is this?&rdquo;</p>
+        <p class="reveal">I&rsquo;m pretty sure that&rsquo;s what they said when they saw me.</p>
+        <p class="reveal">But then I started to steer away from the paths laid before me.</p>
+        <p class="reveal">To skin convention, turn it inside out, and wear it like a mask.</p>
+        <p class="reveal">To deflect the naysayers and embrace the wild, the wonderful, the wicked, and the weird.</p>
+        <p class="origin-note reveal">The glyphs in our logo spell &ldquo;bipedal.&rdquo;</p>
+      </div>
+    </section>
+
     <section class="about" aria-label="The people behind the press">
-      <div class="about-grid">
+      <div class="about-grid reveal-group">
         <figure class="person">
           <img src="../images/courtney.jpg" alt="Courtney F., founder of Bipedal Press, smiling on a beach with a ukulele." width="1000" height="1250" loading="lazy">
           <figcaption>
@@ -66,15 +85,15 @@
     </section>
 
     <section class="about-cta">
-      <div class="about-cta-inner">
+      <div class="about-cta-inner reveal">
         <h2>Got something unclassifiable?</h2>
-        <p>We&rsquo;d love to read it. No fees, a reply within two days.</p>
+        <p>We&rsquo;d love to read it. No fees, fair royalties, and a reply within two days.</p>
         <p class="actions"><a class="btn" href="../submit/">Submit your manuscript</a></p>
       </div>
     </section>
 
     <section class="newsletter" id="newsletter" aria-labelledby="news-h">
-      <div class="news-card">
+      <div class="news-card reveal">
         <div class="news-copy">
           <h2 id="news-h">Be the first to know.</h2>
           <p>Sign up for news about our first books, open calls for submissions, and notes from behind the scenes at Bipedal Press.</p>
@@ -86,6 +105,7 @@
   </main>
 
   <footer class="site-footer">
+    <div class="glyph-divider glyph-divider-sm" aria-hidden="true"></div>
     <nav class="footer-nav" aria-label="Footer">
       <a href="../">Home</a>
       <a href="../about/">About</a>
@@ -94,7 +114,5 @@
     </nav>
     <p>&copy; 2026 Bipedal Press LLC &middot; Hickory, NC &middot; <a href="mailto:courtney@bipedalpress.com">courtney@bipedalpress.com</a></p>
   </footer>
-
-  <script src="../site.js" defer></script>
 </body>
 </html>
