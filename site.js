@@ -1,9 +1,9 @@
 /* Bipedal Press: site-wide script.
 
    1. Scroll reveal: sections fade in as you scroll (skipped for people who prefer reduced motion).
-   2. GoatCounter: a free, cookie-free visitor counter. It stays off until you add your code:
-        a. Sign up at https://www.goatcounter.com and choose a site code (for example "bipedalpress").
-        b. Paste that code between the quotes below, then commit this file. */
+   2. GoatCounter: a free, cookie-free visitor counter. Your stats live at
+      https://bipedalpress.goatcounter.com. The site code is set below; change it only
+      if you rename your GoatCounter site. */
 
 document.documentElement.classList.add('js');
 
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 (function () {
-  var code = ''; // <- your GoatCounter code goes here, e.g. 'bipedalpress'
+  var code = 'bipedalpress'; // your GoatCounter site code
   if (!code) return;
   var s = document.createElement('script');
   s.async = true;

@@ -6,7 +6,7 @@ Plain HTML and CSS, hosted free on GitHub Pages at https://bipedalpress.com.
 - `index.html` is the front page. `about/index.html` and `submit/index.html` are the other pages.
 - `style.css` holds all the colors and type. The oxblood accent is `--accent` at the top.
 - `images/` holds the artwork and photos. `glyph-v.png` and `glyph-h.png` are the glyphs (vertical and horizontal); the site colors them with CSS. `fantasy-alien.webp` is the gilded night-sky version of the alien used on the Speculative fiction card.
-- `site.js` runs the scroll animations and switches on GoatCounter once you add your code.
+- `site.js` runs the scroll animations and the GoatCounter visitor counter (stats at https://bipedalpress.goatcounter.com).
 - `CNAME` (created by GitHub) holds the custom domain. Don't delete it.
 
 ## Common edits

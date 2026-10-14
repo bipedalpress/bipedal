@@ -187,7 +187,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 
 /* ---------- What we publish ---------- */
 .books { border-top: 1px solid color-mix(in srgb, var(--alien-line) 45%, transparent); }
-.shelf { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 2.5vw, 2rem); align-items: end; }
+.shelf { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1rem, 2.5vw, 2rem); align-items: end; }
 .shelf article {
   position: relative; overflow: hidden;
   background: var(--alien);
@@ -202,17 +202,21 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .genre-lit  { min-height: 17rem; }
 .genre-spec { min-height: 22rem; }
 .genre-uncl p { padding-right: 2.5rem; }
+.genre-dark { min-height: 19.5rem; }
 .genre-uncl { min-height: 18.5rem; }
 
 /* Fantasy card: the alien, gilded, under a night sky */
 .shelf .genre-spec {
   background:
-    linear-gradient(to top, rgba(22,19,34,0.96) 0%, rgba(22,19,34,0.7) 38%, rgba(22,19,34,0) 72%),
+    linear-gradient(to top, rgba(22,19,34,0.97) 0%, rgba(22,19,34,0.86) 48%, rgba(22,19,34,0) 82%),
     var(--night) url(images/fantasy-alien.webp) center top / cover no-repeat;
   color: #F6EBCB;
   border-bottom-color: var(--gilt);
 }
 .shelf .genre-spec h3 { color: var(--gilt); }
+
+/* Dark academia card: plain oxblood, same size and shape as the rest */
+.shelf .genre-dark { background: var(--accent); color: var(--cream); border-bottom-color: var(--ink); }
 
 /* Unclassifiable card: the glyphs, watermarked */
 .shelf .genre-uncl { background: var(--cream-deep); }
@@ -223,22 +227,6 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   -webkit-mask: url(images/glyph-v.png) center / contain no-repeat;
           mask: url(images/glyph-v.png) center / contain no-repeat;
 }
-
-/* Dark academia: the editor's favorite gets a bookplate-style band, in the site's own colors */
-.genre-dark {
-  position: relative; overflow: hidden;
-  margin-top: clamp(1.25rem, 3vw, 2.25rem);
-  padding: clamp(1.75rem, 4vw, 3rem);
-  border-radius: 4px; border-bottom: 6px solid var(--gilt);
-  color: var(--cream);
-  background:
-    repeating-linear-gradient(90deg, rgba(255,241,211,0.045) 0 2px, transparent 2px 15px),
-    linear-gradient(135deg, #2A0F14 0%, #4A1721 100%);
-  outline: 1px solid rgba(222,186,96,0.5); outline-offset: -10px;
-}
-.genre-dark .tag { display: inline-block; margin-bottom: 0.6rem; font-family: var(--serif-sc); letter-spacing: 0.08em; font-size: 1rem; color: var(--gilt); }
-.genre-dark h3 { font-size: clamp(2rem, 1.5rem + 2vw, 3.2rem); line-height: 1; margin-bottom: 0.4em; }
-.genre-dark p { margin: 0; max-width: 38rem; font-size: 1.1em; }
 
 /* ---------- Fair pay band ---------- */
 .fairpay {
@@ -385,7 +373,7 @@ html.js .reveal-group.in > .craft:hover { transition-delay: 0s; }
 
 /* ---------- Tablet and phone ---------- */
 @media (max-width: 1000px) {
-  .craft-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .craft-grid, .shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 860px) {
@@ -395,7 +383,7 @@ html.js .reveal-group.in > .craft:hover { transition-delay: 0s; }
   .why-grid, .shelf, .about-grid, .terms, .how-grid { grid-template-columns: 1fr; }
   .news-card { grid-template-columns: 1fr; box-shadow: 6px 6px 0 var(--accent); }
   .shelf article { padding-top: 2.5rem; }
-  .genre-lit, .genre-uncl { min-height: 0; }
+  .genre-lit, .genre-dark, .genre-uncl { min-height: 0; }
   .genre-spec { min-height: 24rem; }
   .origin { grid-template-columns: 1fr; }
   .origin-glyph { display: none; }
