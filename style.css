@@ -206,7 +206,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .genre-lit  { min-height: 17rem; }
 .genre-spec { min-height: 22rem; }
 .genre-uncl p { padding-right: 2.5rem; }
-.genre-dark { min-height: 19.5rem; }
+.genre-dark { min-height: 21.5rem; }
 .genre-uncl { min-height: 18.5rem; }
 
 /* Fantasy card: the alien, gilded, under a night sky */
@@ -219,8 +219,15 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 }
 .shelf .genre-spec h3 { color: var(--gilt); }
 
-/* Dark academia card: plain oxblood, same size and shape as the rest */
-.shelf .genre-dark { background: var(--accent); color: var(--cream); border-bottom-color: var(--ink); }
+/* Dark academia card: the alien by candlelight, in a library */
+.shelf .genre-dark {
+  background:
+    linear-gradient(to top, rgba(27,14,17,0.97) 0%, rgba(27,14,17,0.86) 48%, rgba(27,14,17,0) 82%),
+    #1B0E11 url(images/dark-academia-alien.webp) center top / cover no-repeat;
+  color: #F6EBCB;
+  border-bottom-color: var(--gilt);
+}
+.shelf .genre-dark h3 { color: var(--gilt); }
 
 /* Unclassifiable card: the glyphs, watermarked */
 .shelf .genre-uncl { background: var(--cream-deep); }
@@ -320,21 +327,19 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 /* A dark, boxed panel with an X beside each item, so it never reads like the other lists */
 .notfor { max-width: 82rem; margin: 0 auto; padding: 0 var(--gutter) var(--section); }
 .notfor-box {
-  display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
   background: #1B0E11; color: #F3E6C8;
   border: 2px solid var(--gilt); outline: 1px solid var(--gilt); outline-offset: 6px;
   overflow: hidden;
 }
-.notfor-art { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; border-right: 2px solid var(--gilt); }
 .notfor-body { padding: clamp(1.75rem, 4vw, 3.25rem); }
 .notfor-body h2 { color: var(--gilt); margin: 0 0 0.5rem; }
 .notfor-intro { margin: 0 0 1.5rem; color: #E3D3AE; }
 .notfor-list { list-style: none; margin: 0; padding: 0; }
 .notfor-list li {
-  display: flex; gap: 1rem; align-items: flex-start;
+  display: flex; gap: 0.8rem; align-items: flex-start;
   padding: 1rem 0; border-top: 1px dashed rgba(222, 186, 96, 0.45);
 }
-.notfor-list .x { flex: 0 0 1.6rem; width: 1.6rem; height: 1.6rem; margin-top: 0.15rem; color: var(--accent-light); }
+.notfor-list .x { flex: 0 0 1.05rem; width: 1.05rem; height: 1.05rem; margin-top: 0.3rem; color: var(--accent-light); }
 .notfor-list strong {
   display: block; margin-bottom: 0.2rem;
   font-family: var(--serif); font-weight: 400; color: #FFF1D3;
@@ -412,11 +417,10 @@ html.js .reveal-group.in > .craft:hover { transition-delay: 0s; }
   .hero-art { order: -1; }
   .hero-art img { max-height: 60vh; }
   .why-grid, .shelf, .about-grid, .terms, .how-grid { grid-template-columns: 1fr; }
-  .notfor-box { grid-template-columns: 1fr; }
-  .notfor-art { height: 16rem; border-right: 0; border-bottom: 2px solid var(--gilt); }
   .news-card { grid-template-columns: 1fr; box-shadow: 6px 6px 0 var(--accent); }
   .shelf article { padding-top: 2.5rem; }
-  .genre-lit, .genre-dark, .genre-uncl { min-height: 0; }
+  .genre-lit, .genre-uncl { min-height: 0; }
+  .genre-dark { min-height: 24rem; }
   .genre-spec { min-height: 24rem; }
   .origin { grid-template-columns: 1fr; }
   .origin-glyph { display: none; }
