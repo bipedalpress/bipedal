@@ -157,7 +157,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .quote cite { font-style: italic; }
 
 /* ---------- Shared section frame ---------- */
-.why, .books, .about, .newsletter, .terms-section, .how, .inhouse, .origin, .faq {
+.why, .books, .about, .newsletter, .terms-section, .academia, .how, .after, .inhouse, .origin, .faq {
   max-width: 82rem; margin: 0 auto;
   padding: var(--section) var(--gutter);
 }
@@ -227,7 +227,14 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   color: #F6EBCB;
   border-bottom-color: var(--gilt);
 }
-.shelf .genre-dark h3 { color: var(--gilt); }
+/* The whole card is a link to the explanation on the Submit page */
+.shelf .genre-dark h3 { color: var(--gilt); position: static; }
+.shelf .genre-dark p { pointer-events: none; }
+.genre-dark h3 a { color: inherit; text-decoration: none; }
+.genre-dark h3 a::after { content: ""; position: absolute; inset: 0; z-index: 2; }
+.genre-dark h3 a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+.genre-dark h3 a:focus-visible { outline: none; }
+.genre-dark h3 a:focus-visible::after { outline: 3px solid var(--gilt); outline-offset: -6px; }
 
 /* Unclassifiable card: the glyphs, watermarked */
 .shelf .genre-uncl { background: var(--cream-deep); }
@@ -323,6 +330,27 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .how li { margin-bottom: 0.35em; }
 .how a, .faq-body a { color: var(--accent); }
 
+/* ---------- What we mean by dark academia ---------- */
+.academia { padding-top: 0; }
+.academia-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); margin-top: 1.5rem; align-items: start; }
+.academia-lede { font-family: var(--serif); font-size: clamp(1.35rem, 1.15rem + 0.8vw, 1.7rem); line-height: 1.3; color: var(--accent); }
+.academia-text p { max-width: var(--measure); }
+.academia-books { border-left: 4px solid var(--accent); padding-left: clamp(1.25rem, 3vw, 2rem); }
+.academia-books h3 { margin-bottom: 0.75rem; }
+.academia-books ul { list-style: none; margin: 0; padding: 0; }
+.academia-books li { padding: 0.7rem 0; border-top: 1px solid var(--alien-line); }
+.academia-books li:last-child { border-bottom: 1px solid var(--alien-line); }
+.academia-books cite { display: block; font-style: normal; font-family: var(--serif); font-size: 1.3rem; line-height: 1.25; }
+.academia-books span { color: var(--ink-soft); }
+
+/* ---------- What happens after you submit ---------- */
+.after { padding-top: 0; }
+.after-steps { list-style: none; counter-reset: step; margin: 2rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 3.5rem); }
+.after-steps li { counter-increment: step; border-top: 2px solid var(--ink); padding-top: 1rem; }
+.after-steps h3 { margin-bottom: 0.4em; }
+.after-steps h3::before { content: counter(step) ". "; color: var(--accent); }
+.after-steps p { margin: 0; }
+
 /* ---------- What we're not looking for ---------- */
 /* A dark, boxed panel with an X beside each item, so it never reads like the other lists */
 .notfor { max-width: 82rem; margin: 0 auto; padding: 0 var(--gutter) var(--section); }
@@ -346,6 +374,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
   font-size: clamp(1.2rem, 1.05rem + 0.6vw, 1.45rem); line-height: 1.25;
 }
 .notfor-list span { color: #E3D3AE; }
+.notfor-list a { color: var(--gilt); }
 
 /* ---------- FAQ ---------- */
 .faq { padding-top: 0; }
@@ -385,6 +414,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 /* ---------- Footer ---------- */
 .site-footer { padding: 2.5rem var(--gutter); text-align: center; font-size: 0.95rem; }
 .site-footer p { margin: 0 auto; max-width: none; }
+.site-footer .footer-contact { margin-bottom: 0.5rem; }
 .site-footer a { color: var(--accent); }
 .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.75rem; margin-bottom: 1rem; font-family: var(--serif-sc); font-size: 1.15rem; letter-spacing: 0.03em; }
 .footer-nav a { text-decoration: none; }
@@ -416,7 +446,7 @@ html.js .reveal-group.in > .craft:hover { transition-delay: 0s; }
   .hero { grid-template-columns: 1fr; }
   .hero-art { order: -1; }
   .hero-art img { max-height: 60vh; }
-  .why-grid, .shelf, .about-grid, .terms, .how-grid { grid-template-columns: 1fr; }
+  .why-grid, .shelf, .about-grid, .terms, .how-grid, .after-steps, .academia-grid { grid-template-columns: 1fr; }
   .news-card { grid-template-columns: 1fr; box-shadow: 6px 6px 0 var(--accent); }
   .shelf article { padding-top: 2.5rem; }
   .genre-lit, .genre-uncl { min-height: 0; }
