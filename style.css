@@ -16,8 +16,8 @@
 
   /* Display type: the vintage face, for headings and decorative touches */
   --serif: "IM Fell DW Pica", "Iowan Old Style", Georgia, "Times New Roman", serif;
-  /* Reading type: built for long-form reading on screens */
-  --text: "Literata", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  /* Reading type: a clean sans-serif for body text */
+  --text: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
   --serif-sc: "IM Fell DW Pica SC", "IM Fell DW Pica", Georgia, serif;
 
   --measure: 36rem;
