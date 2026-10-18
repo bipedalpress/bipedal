@@ -157,7 +157,7 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .quote cite { font-style: italic; }
 
 /* ---------- Shared section frame ---------- */
-.why, .books, .about, .newsletter, .terms-section, .academia, .how, .after, .inhouse, .origin, .faq {
+.why, .books, .about, .newsletter, .terms-section, .academia, .lookingfor, .how, .after, .inhouse, .origin, .faq {
   max-width: 82rem; margin: 0 auto;
   padding: var(--section) var(--gutter);
 }
@@ -203,16 +203,15 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .shelf article > * { position: relative; z-index: 1; }
 .shelf p { margin: 0; }
 /* Different heights, like books of different sizes on a shelf */
-.genre-lit  { min-height: 17rem; }
-.genre-spec { min-height: 22rem; }
-.genre-uncl p { padding-right: 2.5rem; }
-.genre-dark { min-height: 21.5rem; }
-.genre-uncl { min-height: 18.5rem; }
+.genre-lit  { min-height: 23rem; }
+.genre-spec { min-height: 25rem; }
+.genre-dark { min-height: 24rem; }
+.genre-uncl { min-height: 24rem; }
 
 /* Fantasy card: the alien, gilded, under a night sky */
 .shelf .genre-spec {
   background:
-    linear-gradient(to top, rgba(22,19,34,0.97) 0%, rgba(22,19,34,0.86) 48%, rgba(22,19,34,0) 82%),
+    linear-gradient(to top, rgba(22,19,34,1) 0%, rgba(22,19,34,0.96) 50%, rgba(22,19,34,0) 88%),
     var(--night) url(images/fantasy-alien.webp) center top / cover no-repeat;
   color: #F6EBCB;
   border-bottom-color: var(--gilt);
@@ -222,29 +221,39 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 /* Dark academia card: the alien by candlelight, in a library */
 .shelf .genre-dark {
   background:
-    linear-gradient(to top, rgba(27,14,17,0.97) 0%, rgba(27,14,17,0.86) 48%, rgba(27,14,17,0) 82%),
+    linear-gradient(to top, rgba(27,14,17,1) 0%, rgba(27,14,17,0.96) 50%, rgba(27,14,17,0) 88%),
     #1B0E11 url(images/dark-academia-alien.webp) center top / cover no-repeat;
   color: #F6EBCB;
   border-bottom-color: var(--gilt);
 }
-/* The whole card is a link to the explanation on the Submit page */
-.shelf .genre-dark h3 { color: var(--gilt); position: static; }
-.shelf .genre-dark p { pointer-events: none; }
-.genre-dark h3 a { color: inherit; text-decoration: none; }
-.genre-dark h3 a::after { content: ""; position: absolute; inset: 0; z-index: 2; }
-.genre-dark h3 a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
-.genre-dark h3 a:focus-visible { outline: none; }
-.genre-dark h3 a:focus-visible::after { outline: 3px solid var(--gilt); outline-offset: -6px; }
+/* The whole card is a link to its explanation on the What we publish page */
+.shelf .genre h3 { position: static; }
+.shelf .genre p { pointer-events: none; }
+.genre h3 a { color: inherit; text-decoration: none; }
+.genre h3 a::after { content: ""; position: absolute; inset: 0; z-index: 2; }
+.genre h3 a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+.genre h3 a:focus-visible { outline: none; }
+.genre h3 a:focus-visible::after { outline: 3px solid var(--accent); outline-offset: -6px; }
+.shelf .genre-spec h3 a:focus-visible::after, .shelf .genre-dark h3 a:focus-visible::after { outline-color: var(--gilt); }
 
-/* Unclassifiable card: the glyphs, watermarked */
-.shelf .genre-uncl { background: var(--cream-deep); }
-.genre-uncl::before {
-  content: ""; position: absolute; z-index: 0;
-  right: 1.25rem; top: 1rem; height: 52%; aspect-ratio: 279 / 1400;
-  background: var(--alien-line); opacity: 0.5;
-  -webkit-mask: url(images/glyph-v.png) center / contain no-repeat;
-          mask: url(images/glyph-v.png) center / contain no-repeat;
+/* Literary card: the alien as a two-color print, a little off-register */
+.shelf .genre-lit {
+  background:
+    linear-gradient(to top, rgba(243,230,198,1) 0%, rgba(243,230,198,0.96) 50%, rgba(243,230,198,0) 88%),
+    #F3E6C6 url(images/literary-alien.webp) center top / cover no-repeat;
+  color: var(--ink);
 }
+.shelf .genre-lit h3 { color: var(--accent); }
+
+/* Unclassifiable card: upside down, in riso colors */
+.shelf .genre-uncl {
+  background:
+    linear-gradient(to top, rgba(255,233,166,1) 0%, rgba(255,233,166,0.96) 50%, rgba(255,233,166,0) 88%),
+    #FFE9A6 url(images/unclassifiable-alien.webp) center top / cover no-repeat;
+  color: var(--ink);
+  border-bottom-color: #E0457B;
+}
+.shelf .genre-uncl h3 { color: #3B1D8F; }
 
 /* ---------- Fair pay band ---------- */
 .fairpay {
@@ -342,6 +351,14 @@ p { margin: 0 0 1em; max-width: var(--measure); }
 .academia-books li:last-child { border-bottom: 1px solid var(--alien-line); }
 .academia-books cite { display: block; font-style: normal; font-family: var(--serif); font-size: 1.3rem; line-height: 1.25; }
 .academia-books span { color: var(--ink-soft); }
+
+/* ---------- What we publish page ---------- */
+.jump { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-top: 1.75rem; max-width: 60rem; font-family: var(--serif-sc); font-size: 1.15rem; letter-spacing: 0.03em; }
+.jump a { color: var(--accent); }
+.genre-sec { max-width: 82rem; margin: 0 auto; padding: clamp(2rem, 4vw, 3rem) var(--gutter) clamp(2.5rem, 5vw, 4rem); }
+.genre-sec h2 { border-top: 2px solid var(--ink); padding-top: 1.25rem; margin-bottom: 0.25rem; }
+.lookingfor { padding-top: 0; }
+.lookingfor .section-intro a { color: var(--accent); }
 
 /* ---------- What happens after you submit ---------- */
 .after { padding-top: 0; }
@@ -449,9 +466,7 @@ html.js .reveal-group.in > .craft:hover { transition-delay: 0s; }
   .why-grid, .shelf, .about-grid, .terms, .how-grid, .after-steps, .academia-grid { grid-template-columns: 1fr; }
   .news-card { grid-template-columns: 1fr; box-shadow: 6px 6px 0 var(--accent); }
   .shelf article { padding-top: 2.5rem; }
-  .genre-lit, .genre-uncl { min-height: 0; }
-  .genre-dark { min-height: 24rem; }
-  .genre-spec { min-height: 24rem; }
+  .genre-lit, .genre-uncl, .genre-dark, .genre-spec { min-height: 25rem; }
   .origin { grid-template-columns: 1fr; }
   .origin-glyph { display: none; }
   .fairpay::after { height: 130%; right: -1rem; opacity: 0.1; }
