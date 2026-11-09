@@ -604,18 +604,32 @@ html.js .reveal-group.in > .craft:hover { transition-delay: 0s; }
 /* ---------- Swag band (home) ---------- */
 .swag { max-width: 82rem; margin: 0 auto; padding: 0 var(--gutter) var(--section); }
 .swag-inner {
-  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3rem); align-items: center;
   border: 2px solid var(--ink); border-radius: 8px;
-  padding: clamp(1.5rem, 3.5vw, 2.5rem);
+  padding: clamp(1.5rem, 3.5vw, 2.75rem);
 }
-.swag-copy h2 { font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.3rem); margin-bottom: 0.4em; }
-.swag-copy p { margin-bottom: 0.7em; }
+.swag-copy { text-align: center; margin-bottom: clamp(1.75rem, 4vw, 2.75rem); }
+.swag-copy h2 { font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.4rem); margin-bottom: 0.4em; }
+.swag-copy p { margin-left: auto; margin-right: auto; margin-bottom: 0.7em; max-width: 40rem; }
 .swag-note { font-size: 0.95rem; color: var(--ink-soft); }
-.swag-copy .actions { margin-top: 1.1rem; margin-bottom: 0; }
-.swag-pics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem; }
-.swag-pics a { display: block; border: 1px solid var(--alien-line); line-height: 0; }
-.swag-pics a:hover, .swag-pics a:focus-visible { border-color: var(--accent); }
-.swag-pics img { width: 100%; height: auto; }
-@media (max-width: 860px) { .swag-inner { grid-template-columns: 1fr; } }
+.swag-copy .actions { margin-top: 1.1rem; margin-bottom: 0; justify-content: center; }
+.swag-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  max-width: 62rem; margin: 0 auto;
+}
+/* framed prints: a cream mat inside an ink frame */
+.swag-frame {
+  display: block; line-height: 0;
+  padding: 0.65rem; background: var(--cream-deep);
+  border: 2px solid var(--ink); box-shadow: 7px 7px 0 var(--accent);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.swag-frame img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border: 1px solid var(--alien-line); }
+.swag-frame:hover, .swag-frame:focus-visible { transform: translate(-2px, -2px); box-shadow: 9px 9px 0 var(--accent); }
+@media (max-width: 600px) {
+  .swag-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem; }
+  .swag-frame { padding: 0.45rem; box-shadow: 5px 5px 0 var(--accent); margin-right: 5px; margin-bottom: 5px; }
+}
+@media (prefers-reduced-motion: reduce) { .swag-frame { transition: none; } }
 .hero .actions { gap: 0.6rem; }
 .hero .actions .btn { padding: 0.7em 1.1em; font-size: 1.05rem; }
