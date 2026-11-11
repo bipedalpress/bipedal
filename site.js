@@ -32,3 +32,12 @@ document.addEventListener('DOMContentLoaded', function () {
   s.setAttribute('data-goatcounter', 'https://' + code + '.goatcounter.com/count');
   document.head.appendChild(s);
 })();
+
+
+/* The "page wandered off" page: if the address was typed with capital letters
+   (for example /books/Rideshare/), send the visitor to the lowercase address, which is the real one. */
+(function () {
+  if (document.title.indexOf('Page not found') !== 0) return;
+  var p = location.pathname, lower = p.toLowerCase();
+  if (p !== lower) location.replace(lower + location.search + location.hash);
+})();

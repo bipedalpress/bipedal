@@ -1,0 +1,180 @@
+/* RIDESHARE page: a photo of a night drive. The mirror, gauges, radio, glovebox and wheel open pop-up windows.
+   The same five buttons also sit in a plain bar above the photo, for screen readers, keyboards, and phones.
+   Cover reveal date: edit data-reveal on the #countdown element in index.html. */
+
+body.rs { background: #07060b; color: var(--cream); }
+.rs .site-header { color: var(--ink); }
+.rs main a, .rs dialog a { color: var(--gilt); }
+.rs :focus-visible { outline: 3px solid var(--gilt); outline-offset: 3px; }
+.rs-lock { overflow: hidden; }
+
+/* ---------- Title ---------- */
+.rs-hero { text-align: center; padding: clamp(1.75rem, 5vw, 2.5rem) var(--gutter) 1.25rem; background: #07060b; }
+.rs-title {
+  margin: 0; font-size: clamp(2.4rem, 1.5rem + 5vw, 5rem); letter-spacing: 0.14em; line-height: 1; color: var(--cream);
+  text-shadow: 0 0 18px rgba(107,31,42,0.9), 0 0 2px rgba(255,241,211,0.6);
+}
+.rs-by { margin: 0.7rem auto 0; max-width: none; font-family: "IM Fell DW Pica", Georgia, serif; font-style: italic; font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.7rem); color: var(--gilt); }
+.rs-sub { margin: 0.8rem auto 0; max-width: none; color: rgba(255,241,211,0.88); font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem); }
+
+/* ---------- The button bar ---------- */
+.rs-bar { max-width: 78rem; margin: 0 auto; padding: 1.25rem var(--gutter) 1.5rem; }
+.rs-bar ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.7rem; }
+.rs-bar li { margin: 0; padding: 0; }
+.rs-bar button {
+  position: relative; display: flex; flex-direction: column; gap: 0.15rem; align-items: flex-start; width: 100%; min-height: 4rem;
+  padding: 0.75rem 0.8rem 0.7rem 1.9rem; text-align: left; cursor: pointer; font: inherit; color: var(--cream);
+  background: linear-gradient(#1c1923, #0e0c14); border: 1px solid #4a4753; border-radius: 10px;
+}
+.rs-bar button:hover { border-color: var(--gilt); background: linear-gradient(#231f2b, #121018); }
+.rs-bar .led {
+  position: absolute; left: 0.8rem; top: 1rem; width: 0.55rem; height: 0.55rem; border-radius: 50%;
+  background: #ff3b3b; box-shadow: 0 0 8px 2px rgba(255,59,59,0.65);
+}
+.rs-bar button.is-primary { border-color: var(--gilt); background: linear-gradient(#2d2515, #17130b); }
+.b-name { font-weight: 700; font-size: 1rem; line-height: 1.2; }
+.b-sub { font-size: 0.82rem; line-height: 1.25; color: rgba(255,241,211,0.75); }
+
+/* ---------- The photo and its click spots ---------- */
+.scene-wrap { position: relative; display: flex; flex-direction: column; align-items: center; background: #07060b; }
+.scene { position: relative; margin: 0; width: min(100%, 1536px); }
+.scene-photo { display: block; width: 100%; height: auto; }
+.scene-hs { position: absolute; inset: 0; }
+.hs {
+  position: absolute; margin: 0; padding: 0; cursor: pointer; background: transparent; border: 0; border-radius: 12px;
+  transition: box-shadow 0.2s, background-color 0.2s;
+}
+.hs:hover { background: rgba(222,186,96,0.08); box-shadow: inset 0 0 0 2px var(--gilt), 0 0 26px rgba(222,186,96,0.5); }
+.hs-mirror { left: 40.9%; top: 21.3%; width: 24.4%; height: 12.6%; border-radius: 22px; }
+.hs-visor  { left: 1%;    top: 4.4%;  width: 23.5%; height: 7%;   }
+.hs-wheel  { left: 1.9%;  top: 54.7%; width: 28.6%; height: 14.2%; }
+.hs-gauges { left: 11.1%; top: 68.9%; width: 28%;   height: 14.2%; }
+.hs-radio  { left: 45.2%; top: 80.6%; width: 18.9%; height: 19.4%; }
+.hs-glove  { left: 68.4%; top: 85%;   width: 28.6%; height: 15%; }
+.hs-glass { position: absolute; left: 3.5%; top: 8.5%; width: 93.6%; height: 72.9%; pointer-events: none; transition: filter 0.2s; }
+.hs-mirror:hover .hs-glass { filter: brightness(1.18); }
+.hs-chip {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); white-space: nowrap; pointer-events: none;
+  padding: 0.28em 0.8em; font: 700 clamp(0.58rem, 0.2rem + 0.85vw, 0.82rem)/1.2 "Libre Franklin", sans-serif; letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--gilt); background: rgba(7,6,11,0.82); border: 1px solid rgba(222,186,96,0.6); border-radius: 999px;
+}
+.hs-chip-below { top: calc(100% + 0.9em); }
+.hs-chip::before { content: ""; display: inline-block; width: 0.5em; height: 0.5em; margin-right: 0.55em; border-radius: 50%; background: #ff3b3b; box-shadow: 0 0 6px 1px rgba(255,59,59,0.7); animation: rs-pulse 2.4s ease-in-out infinite; }
+@keyframes rs-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+/* On a wide screen the title sits on the dark roof of the car, and the photo fills the width of the window. */
+@media (min-width: 821px) {
+  .rs-hero { position: absolute; top: 0; left: 0; right: 0; z-index: 3; padding-top: 0.4%; padding-bottom: 0; background: none; pointer-events: none; }
+  .rs-title { font-size: clamp(2.4rem, 0.6rem + 3.6vw, 4.4rem); text-shadow: 0 0 22px #000, 0 0 8px #000, 0 0 2px rgba(255,241,211,0.6); }
+  .rs-by { margin-top: 0.15rem; font-size: clamp(1.1rem, 0.5rem + 1.5vw, 1.6rem); text-shadow: 0 0 12px #000, 0 0 4px #000; }
+  .rs-sub { display: none; }   /* the photo is busy here; the date is in the Countdown button and the text below */
+}
+/* On screens wider than the photo, fade its left and right edges into the page. */
+@media (min-width: 1537px) {
+  .scene-photo { -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+}
+
+/* ---------- Below the photo ---------- */
+.rs-info { max-width: 42rem; margin: 0 auto; padding: clamp(2.5rem, 6vw, 4.5rem) var(--gutter); }
+.rs-info h2 { margin: 2.2em 0 0.4em; font-size: clamp(1.5rem, 1.25rem + 1vw, 2rem); }
+.rs-info h2:first-child { margin-top: 0; }
+.rs-info p { max-width: none; color: rgba(255,241,211,0.9); }
+.rs-def { padding: 1.1rem 1.3rem; border: 1px solid rgba(255,241,211,0.3); border-radius: 8px; font-family: "Courier New", Courier, monospace; }
+.rs-def p { margin: 0.6rem 0 0; }
+.rs-def .rs-def-term { margin: 0; font-weight: 700; font-size: 1.15rem; }
+.rs-textbtn { padding: 0; font: inherit; color: var(--gilt); text-decoration: underline; text-underline-offset: 0.15em; background: none; border: 0; cursor: pointer; }
+.rs-textbtn:hover { color: var(--cream); }
+.rs-nojs { margin-top: 1.5rem; }
+.rs .site-footer { background: #07060b; color: rgba(255,241,211,0.8); border-top: 1px solid rgba(255,241,211,0.12); }
+.rs .site-footer a { color: var(--gilt); }
+
+/* ---------- Pop-up windows ---------- */
+.rs-dialog {
+  position: fixed; width: min(92vw, 38rem); max-height: 92svh; margin: auto; padding: 0; overflow: auto;
+  color: var(--cream); background: #100f16; border: 2px solid #3a3744; border-radius: 14px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.75);
+}
+.rs-dialog::backdrop { background: rgba(3,2,6,0.8); }
+.rs-dialog-in { position: relative; padding: clamp(1.25rem, 4vw, 2rem); }
+.rs-dialog p { max-width: none; }
+.rs-dialog-h { font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem); margin: 0 2.6rem 0.5em 0; }
+.rs-close {
+  position: absolute; top: 0.7rem; right: 0.7rem; z-index: 2; width: 2.75rem; height: 2.75rem; padding: 0; cursor: pointer;
+  font-size: 1.7rem; line-height: 1; color: var(--cream); background: #100f16; border: 1px solid rgba(255,241,211,0.5); border-radius: 50%;
+}
+.rs-close:hover { background: #2a2733; }
+.rs-small { font-size: 0.9rem; color: rgba(255,241,211,0.78); margin: 0.9rem 0 0; }
+.rs-type { font-family: "Courier New", Courier, monospace; }
+
+/* teaser */
+.rs-dialog-video { width: min(92vw, 27rem); }
+.rs-video { display: block; width: auto; max-width: 100%; height: min(62svh, 40rem); margin: 0 auto; aspect-ratio: 9 / 16; background: #000; object-fit: contain; }
+.rs-transcript { margin-top: 1rem; font-size: 0.95rem; }
+.rs-transcript summary { cursor: pointer; color: var(--gilt); }
+.rs-transcript p { margin: 0.6rem 0 0; }
+
+/* glovebox */
+h2.rs-type { font-family: "Courier New", Courier, monospace; font-weight: 700; font-size: clamp(1.3rem, 1.1rem + 1vw, 1.8rem); }
+.rs-dialog-glove p.rs-type { font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem); line-height: 1.6; }
+
+/* review copies */
+.rs-dialog-review { width: min(94vw, 36rem); }
+.rv-mail { margin: 0.9rem 0 0; font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem); font-weight: 700; overflow-wrap: anywhere; }
+.rv-h { margin: 1.2rem 0 0.4rem; font-family: "Libre Franklin", sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gilt); }
+.rv-list { margin: 0; padding-left: 1.25rem; }
+.rv-list li { margin: 0.35rem 0; }
+.rv-list li::marker { color: var(--gilt); }
+
+/* author */
+.rs-dialog-author { width: min(94vw, 42rem); }
+.author { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(1rem, 3vw, 1.75rem); align-items: start; }
+.author img { display: block; width: 100%; height: auto; border: 2px solid var(--cream); border-radius: 6px; }
+.author .rs-dialog-h { margin-top: 0.2rem; }
+.author-role { margin: 0 0 0.9rem; font-family: "Libre Franklin", sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gilt); }
+
+/* countdown: red digits in round gauges */
+.rs-dialog-count { width: min(94vw, 34rem); background: #0b0a0e; }
+.cd-date { margin: 0 0 0.4rem; font-size: 1.1rem; }
+.cd-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.cd-dials { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(0.4rem, 2vw, 1rem); margin-top: 1.25rem; }
+.dial {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle at 50% 40%, #1b0b0d, #070506 70%); border: 3px solid #7d1d22; box-shadow: 0 0 14px rgba(255,59,59,0.35), inset 0 0 18px rgba(0,0,0,0.9);
+}
+.dial b { font: 400 clamp(2rem, 1.2rem + 4vw, 3.2rem)/1 "VT323", "Courier New", monospace; color: #ff5a4f; text-shadow: 0 0 10px rgba(255,59,59,0.8); }
+.dial small { margin-top: 0.15rem; font: 700 0.62rem/1 "Libre Franklin", sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,241,211,0.75); }
+
+.cd-cal { margin: 1.25rem 0 0; }
+.rs a.rs-btn { display: inline-block; padding: 0.6em 1.2em; font-weight: 700; text-decoration: none; color: #15130e; background: var(--gilt); border: 2px solid var(--gilt); border-radius: 999px; }
+.rs a.rs-btn:hover { background: transparent; color: var(--gilt); }
+
+/* newsletter: the radio */
+.rs-dialog-radio { width: min(94vw, 34rem); background: linear-gradient(#15131a, #09080c); border-color: #4a4753; border-radius: 18px; }
+.radio-screen {
+  margin-right: 3.1rem; padding: 0.9rem 1.1rem 1rem; background: #03090c; border: 2px solid #1d2f33; border-radius: 8px;
+  box-shadow: inset 0 0 22px rgba(0,0,0,0.9); font-family: "VT323", "Courier New", monospace; color: #a8eef5; text-shadow: 0 0 8px rgba(120,230,240,0.55);
+}
+.radio-title { margin: 0; font: 400 clamp(2.1rem, 1.3rem + 4vw, 3.4rem)/1 "VT323", "Courier New", monospace; letter-spacing: 0.05em; color: inherit; }
+.radio-line { margin: 0.45rem 0 0; font-size: clamp(1.05rem, 0.9rem + 0.8vw, 1.35rem); letter-spacing: 0.06em; line-height: 1.15; }
+.rs-news-frame { display: block; width: 100%; height: 320px; margin-top: 1.1rem; background: #fff; border: 2px solid #4a4753; border-radius: 6px; }
+.radio-keys { display: flex; gap: 0.5rem; margin-top: 1rem; }
+.radio-keys i { flex: 1; height: 0.8rem; border-radius: 3px; background: #ff3b3b; box-shadow: 0 0 8px rgba(255,59,59,0.55); opacity: 0.9; }
+.rs-close-knob { border: 2px solid #ff3b3b; box-shadow: 0 0 10px rgba(255,59,59,0.5); }
+
+/* ---------- Phones and small tablets ---------- */
+@media (max-width: 820px) {
+  .rs-bar ul { grid-template-columns: repeat(2, 1fr); }
+  .rs-bar button { min-height: 4.2rem; }
+  .hs-chip, .hs-visor, .hs-wheel, .hs-gauges, .hs-radio, .hs-glove { display: none; }   /* small targets on a phone: the bar does the work */
+  .author { grid-template-columns: 1fr; }
+  .author img { max-width: 14rem; }
+}
+@media (max-width: 480px) {
+  .rs-title { letter-spacing: 0.08em; }
+  .dial small { font-size: 0.55rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hs-chip::before { animation: none; }
+  .hs, .hs-glass { transition: none; }
+}

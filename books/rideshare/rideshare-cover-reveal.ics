@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Bipedal Press//RIDESHARE//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:rideshare-cover-reveal-20261120@bipedalpress.com
+DTSTAMP:20261111T220000Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:RIDESHARE cover reveal
+DESCRIPTION:The cover reveal for RIDESHARE by David Ridd\, the first book from Bipedal Press. https://bipedalpress.com/books/rideshare/
+URL:https://bipedalpress.com/books/rideshare/
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:RIDESHARE cover reveal today
+TRIGGER:PT9H
+END:VALARM
+END:VEVENT
+END:VCALENDAR
