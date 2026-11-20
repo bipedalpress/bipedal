@@ -674,3 +674,25 @@ html.js .reveal-group.in > .craft:hover { transition-delay: 0s; }
 }
 .books-label { color: var(--accent); margin-bottom: 0.8rem; }
 .books-list .coming-label { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+
+/* ---------- Press page ---------- */
+.press { max-width: 60rem; margin: 0 auto; padding: 0 var(--gutter) var(--section); }
+.press section { padding: clamp(1.75rem, 4vw, 2.75rem) 0; border-top: 3px solid var(--accent); margin-top: clamp(1rem, 3vw, 2rem); }
+.press section:first-child { margin-top: 0; }
+.press h2 { font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.6rem); margin-bottom: 0.6em; }
+.press h3 { margin: 1.6em 0 0.5em; font-size: 1.3rem; }
+.press p, .press ul { max-width: 44rem; }
+.press-facts { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 2rem; }
+.press-facts div { border-bottom: 1px solid color-mix(in srgb, var(--ink) 20%, transparent); padding-bottom: 0.6rem; }
+.press-facts dt { font-family: var(--sans); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.press-facts dd { margin: 0.2rem 0 0; }
+.press-tag { font-size: 1.15rem; }
+.press-note { color: var(--ink-soft); }
+.press-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem; margin-top: 1.5rem; }
+.press-grid figure, .press-author figure { margin: 0; }
+.press-grid img { display: block; width: 100%; height: 16rem; object-fit: contain; background: var(--ink); border-radius: 6px; }
+.press figcaption { margin-top: 0.6rem; font-size: 0.95rem; line-height: 1.45; }
+.press-author { display: grid; grid-template-columns: minmax(0, 12rem) minmax(0, 1fr); gap: clamp(1.25rem, 4vw, 2.5rem); align-items: start; }
+.press-author img { display: block; width: 100%; height: auto; border: 2px solid var(--ink); border-radius: 6px; }
+.press-files li { margin: 0.4rem 0; }
+@media (max-width: 760px) { .press-grid { grid-template-columns: 1fr; } .press-grid img { height: auto; max-height: 20rem; } .press-facts { grid-template-columns: 1fr; } .press-author { grid-template-columns: 1fr; } .press-author figure { max-width: 12rem; } }
