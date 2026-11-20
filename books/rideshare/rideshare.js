@@ -1,5 +1,5 @@
 /* RIDESHARE page script.
-   1. Opens and closes the pop-up windows (teaser, countdown, newsletter, glovebox, author).
+   1. Opens and closes the pop-up windows (cover, teaser, countdown, newsletter, glovebox, author, review copies).
    2. Runs the cover reveal countdown. The date lives in index.html, on the element with id="countdown",
       in the data-reveal attribute. Use this form: 2026-11-20T00:00:00-05:00 (date, time, then the time zone offset;
       -05:00 is Eastern standard time). Leave it empty and the window says "Date coming soon". */
@@ -16,6 +16,7 @@
   function openDialog(id) {
     var d = document.getElementById(id);
     if (!d) return;
+    dialogs.forEach(function (o) { if (o !== d && o.open && o.close) o.close(); });   // one window at a time
     var frame = d.querySelector('iframe[data-src]');
     if (frame && !frame.getAttribute('src')) frame.setAttribute('src', frame.getAttribute('data-src'));
     if (typeof d.showModal === 'function') { if (!d.open) d.showModal(); }
@@ -39,7 +40,7 @@
   });
 
   // Links like /books/rideshare/#teaser open a window straight away.
-  var byHash = { '#teaser': 'dlg-teaser', '#countdown': 'dlg-count', '#newsletter': 'dlg-news', '#glovebox': 'dlg-glove', '#author': 'dlg-author', '#review': 'dlg-review' };
+  var byHash = { '#cover': 'dlg-cover', '#teaser': 'dlg-teaser', '#countdown': 'dlg-count', '#newsletter': 'dlg-news', '#glovebox': 'dlg-glove', '#author': 'dlg-author', '#review': 'dlg-review' };
   function fromHash() { if (byHash[location.hash]) openDialog(byHash[location.hash]); }
   fromHash();
   window.addEventListener('hashchange', fromHash);
@@ -64,8 +65,9 @@
     var s = Math.floor((target - Date.now()) / 1000);
     if (s <= 0) {
       Object.keys(units).forEach(function (k) { units[k].textContent = '00'; });
-      note.textContent = 'It is reveal day.';
-      if (sr) sr.textContent = 'It is reveal day.';
+      note.textContent = 'The cover is out.';
+      if (sr) sr.textContent = 'The cover is out.';
+      var cal = cd.querySelector('.cd-cal'); if (cal) cal.hidden = true;   // no point adding a passed date to a calendar
       clearInterval(timer);
       return;
     }
