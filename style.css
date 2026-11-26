@@ -698,7 +698,8 @@ html.js .reveal-group.in > .craft:hover { transition-delay: 0s; }
 @media (max-width: 760px) { .press-grid { grid-template-columns: 1fr; } .press-grid img { height: auto; max-height: 20rem; } .press-facts { grid-template-columns: 1fr; } .press-author { grid-template-columns: 1fr; } .press-author figure { max-width: 12rem; } }
 
 /* contact */
-.contact { max-width: 60rem; margin: 0; padding: 0 var(--gutter) var(--section); display: grid; gap: clamp(1rem, 3vw, 1.75rem); }
+.contact, .contact-intro { max-width: 60rem; margin-left: auto; margin-right: auto; }
+.contact { padding: 0 var(--gutter) var(--section); display: grid; gap: clamp(1rem, 3vw, 1.75rem); }
 .contact-card { border-top: 3px solid var(--accent); padding-top: clamp(1.25rem, 3vw, 1.75rem); }
 .contact-card h2 { font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem); margin-bottom: 0.5em; }
 .contact-card p { max-width: 44rem; }
