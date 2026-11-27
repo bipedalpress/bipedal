@@ -759,3 +759,11 @@ html.js .reveal-group.in > .craft:hover { transition-delay: 0s; }
 
 .author-photo.is-placeholder { object-fit: contain; background: var(--cream); aspect-ratio: auto; }
 .author-status em { font-style: normal; }
+
+@media (max-width: 480px) {
+  .site-header nav > a:first-child { display: none; }
+}
+@media (max-width: 360px) {
+  .site-header nav > a:first-child { display: inline; }
+  .site-header nav > a:nth-child(3) { display: none; }
+}
